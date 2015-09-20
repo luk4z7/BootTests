@@ -1,5 +1,5 @@
 <?php
 
-namespace SONBase;
+namespace BootTests;
 
 return array();

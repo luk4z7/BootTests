@@ -1,5 +1,5 @@
 <?php
-namespace SONBase\Test;
+namespace BootTests\Test;
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
@@ -18,10 +18,10 @@ abstract class AbstractBootstrap
     {
         $root = __DIR__ . '/../../../../../../';
         // Load the user-defined test configuration file, if it exists; otherwise, load
-        if (is_readable($root.'config/test.config.php')) {
-            $testConfig = include $root.'config/test.config.php';
+        if (is_readable($root.'config/application.config.php')) {
+            $testConfig = include $root.'config/application.config.php';
         } else {
-            $testConfig = include $root.'config/test.config.php.dist';
+            $testConfig = include $root.'config/application.config.php.dist';
         }
 
         $zf2ModulePaths = array();

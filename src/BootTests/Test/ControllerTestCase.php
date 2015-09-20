@@ -1,5 +1,5 @@
 <?php
-namespace SONBase\Test;
+namespace BootTests\Test;
 
 use Zend\Http\Request;
 use Zend\Http\Response;
@@ -7,6 +7,8 @@ use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Resolver;
+use BootTests\Test\AbstractBootstrap;
+use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
 
 abstract class ControllerTestCase extends TestCase
 {
@@ -65,15 +67,14 @@ abstract class ControllerTestCase extends TestCase
         parent::setup();
         $this->controller = new $this->controllerFQDN;
         $this->request    = new Request();
-        $this->routeMatch = new RouteMatch(array(
-            'router' => array(
-                'routes' => array(
-                    $this->controllerRoute => $this->routes[$this->controllerRoute]
-                )
-            )
-        ));
+        $this->routeMatch = new RouteMatch(['controller' => $this->controllerRoute]);
+        $this->event      = new MvcEvent();
+        $config = $this->serviceManager->get('Config');
+        $routerConfig = isset($config['router']) ? $config['router'] : [];
+        $router = HttpRouter::factory($routerConfig);
+
+        $this->event->setRouter($router);
         $this->event->setRouteMatch($this->routeMatch);
-        
         $this->controller->setEvent($this->event);
         $this->controller->setServiceLocator($this->serviceManager);
     }
