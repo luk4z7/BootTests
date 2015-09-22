@@ -108,11 +108,10 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function createDatabase($module)
     {
-        if (file_exists(getcwd().'/module/' . $module . '/db/create.sql'))
+        if (file_exists(getcwd().'/module/' . $module . '/db/execute.sql'))
         {
-            $sql = file_get_contents(getcwd().'/module/' . $module . '/db/create.sql');
+            $sql = file_get_contents(getcwd().'/module/' . $module . '/db/execute.sql');
             $this->getEm()->getConnection()->exec($sql);
-            $this->getEm()->getConnection()->exec('SET FOREIGN_KEY_CHECKS = 0;');
         }
     }
 
