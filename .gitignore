@@ -1,0 +1,27 @@
+
+# Arquivos temporarios gerados por IDE's etc ..
+.DS_Store
+.git-old/
+.elasticbeanstalk/
+nbproject/private/
+nbproject/
+.idea
+
+# vendor
+vendor/
+public/assets/vendor/
+
+# arquivos binarios
+bin/
+
+# Arquivos dos tests
+module/**/tests/_reports/
+
+# Documentação
+docs/
+
+# Arquivos SQL usados nos execução dos tests
+*.sql
+
+# Arquivo do composer
+composer.phar

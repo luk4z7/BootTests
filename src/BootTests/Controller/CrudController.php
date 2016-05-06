@@ -8,17 +8,45 @@ use Zend\Mvc\Controller\AbstractActionController,
 use Zend\Paginator\Paginator,
     Zend\Paginator\Adapter\ArrayAdapter;
 
+/**
+ * Class CrudController
+ * @package BootTests\Controller
+ */
 abstract class CrudController extends AbstractActionController
 {
-
+    /**
+     * @var
+     */
     protected $em;
+
+    /**
+     * @var
+     */
     protected $service;
+
+    /**
+     * @var
+     */
     protected $entity;
+
+    /**
+     * @var
+     */
     protected $form;
+
+    /**
+     * @var
+     */
     protected $route;
+
+    /**
+     * @var
+     */
     protected $controller;
 
-
+    /**
+     * @return ViewModel
+     */
     public function indexAction() {
 
         $list = $this->getEm()
@@ -35,6 +63,9 @@ abstract class CrudController extends AbstractActionController
 
     }
 
+    /**
+     * @return ViewModel
+     */
     public function newAction()
     {
         $form = new $this->form();
@@ -55,6 +86,9 @@ abstract class CrudController extends AbstractActionController
         return new ViewModel(array('form'=>$form));
     }
 
+    /**
+     * @return ViewModel
+     */
     public function editAction()
     {
         $form = new $this->form();
@@ -81,6 +115,9 @@ abstract class CrudController extends AbstractActionController
         return new ViewModel(array('form'=>$form));
     }
 
+    /**
+     * @return mixed
+     */
     public function deleteAction()
     {
         $service = $this->getServiceLocator()->get($this->service);

@@ -2,4 +2,4 @@
 
 namespace BootTests;
 
-return array();
+return [];

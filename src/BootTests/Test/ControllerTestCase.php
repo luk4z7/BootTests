@@ -10,6 +10,10 @@ use Zend\View\Resolver;
 use BootTests\Test\AbstractBootstrap;
 use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
 
+/**
+ * Class ControllerTestCase
+ * @package BootTests\Test
+ */
 abstract class ControllerTestCase extends TestCase
 {
     /**

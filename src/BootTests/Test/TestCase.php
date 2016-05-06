@@ -9,6 +9,10 @@ use Doctrine\ORM\EntityManager;
 
 chdir(__DIR__.'/../../../../../../');
 
+/**
+ * Class TestCase
+ * @package BootTests\Test
+ */
 class TestCase extends \PHPUnit_Framework_TestCase
 {
     /**
